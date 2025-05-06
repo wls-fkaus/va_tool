@@ -1,8 +1,19 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import toml
 
 # Set wide layout and page config
+st.set_page_config(page_title="Top Program Combinations", layout="wide")
+
+# Load the config.toml file
+config = toml.load('config.toml')
+
+# Extract values for the page configuration
+page_title = config.get('app', {}).get('title', 'Default Title')
+layout = config.get('app', {}).get('layout', 'centered')
+
+# Set the page config with values from config.toml
 st.set_page_config(page_title="Top Program Combinations", layout="wide")
 
 # Inject custom CSS for black and gold theme
